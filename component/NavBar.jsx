@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import React from "react";
 const NavBar = () => {
@@ -16,7 +15,7 @@ const NavBar = () => {
               </a>
               <ul aria-expanded="false">
                 <li>
-                  <Link href="/">
+                  <Link href="/ecommerce">
                     <a>Dashboards</a>
                   </Link>
                 </li>
@@ -31,22 +30,22 @@ const NavBar = () => {
               </a>
               <ul aria-expanded="false">
                 <li>
-                  <Link href="/add-slider-and-ads">
+                  <Link href="/ecommerce/add-slider-and-ads">
                     <a>Add slider & ads</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/list-of-slider">
+                  <Link href="/ecommerce/list-of-slider">
                     <a>List of slider</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/list-of-offer">
+                  <Link href="/ecommerce/list-of-offer">
                     <a>List of offer</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/list-of-ads">
+                  <Link href="/ecommerce/list-of-ads">
                     <a>List of ads</a>
                   </Link>
                 </li>
@@ -61,22 +60,22 @@ const NavBar = () => {
               </a>
               <ul aria-expanded="false">
                 <li>
-                  <Link href="/add-category">
+                  <Link href="/ecommerce/add-category">
                     <a>Add category</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/list-of-category">
+                  <Link href="/ecommerce/list-of-category">
                     <a>List of category</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/list-of-subcategory">
+                  <Link href="/ecommerce/list-of-subcategory">
                     <a>List of Subcategory</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/list-of-brand">
+                  <Link href="/ecommerce/list-of-brand">
                     <a>List of Brand</a>
                   </Link>
                 </li>
@@ -91,13 +90,8 @@ const NavBar = () => {
               </a>
               <ul aria-expanded="false">
                 <li>
-                  <Link href="/add-product">
+                  <Link href="/ecommerce/add-product">
                     <a>Add product</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/create-product-package">
-                    <a>Create product package</a>
                   </Link>
                 </li>
               </ul>
@@ -116,27 +110,27 @@ const NavBar = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/list-of-product-offer">
+                  <Link href="/ecommerce/list-of-product-offer">
                     <a>List of offer</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/list-of-product-flash-sales">
+                  <Link href="/ecommerce/list-of-product-flash-sales">
                     <a>List of flash sales</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/list-of-product-cash-back">
+                  <Link href="/ecommerce/list-of-product-cash-back">
                     <a>List of cash back</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/list-of-product-discount">
+                  <Link href="/ecommerce/list-of-product-discount">
                     <a>List of discount</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/list-of-product-package">
+                  <Link href="/ecommerce/list-of-product-package">
                     <a>List of product package</a>
                   </Link>
                 </li>
@@ -151,22 +145,22 @@ const NavBar = () => {
               </a>
               <ul aria-expanded="false">
                 <li>
-                  <Link href="/list-of-product-stock-qty">
+                  <Link href="/ecommerce/list-of-product-stock-qty">
                     <a>Product stock qty</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/list-of-product-package-stock-qty">
+                  <Link href="/ecommerce/list-of-product-package-stock-qty">
                     <a>Package stock qty</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/remainder-product-stock-qty">
+                  <Link href="/ecommerce/remainder-product-stock-qty">
                     <a> Remainder stock qty</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/remainder-product-package-stock-qty">
+                  <Link href="/ecommerce/remainder-product-package-stock-qty">
                     <a>Remainder package qty</a>
                   </Link>
                 </li>
@@ -181,17 +175,17 @@ const NavBar = () => {
               </a>
               <ul aria-expanded="false">
                 <li>
-                  <Link href="/update-product-stock-qty">
+                  <Link href="/ecommerce/update-product-stock-qty">
                     <a>Update stock qty</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/list-of-update-product-stock-qty">
+                  <Link href="/ecommerce/list-of-update-product-stock-qty">
                     <a>Product stock qty & list</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/list-of-update-product-package-stock-qty">
+                  <Link href="/ecommerce/list-of-update-product-package-stock-qty">
                     <a> Package stock qty & list</a>
                   </Link>
                 </li>
@@ -206,23 +200,23 @@ const NavBar = () => {
               </a>
               <ul aria-expanded="false">
                 <li>
-                  <Link href="/daily-pending-product-order">
+                  <Link href="/ecommerce/daily-pending-product-order">
                     <a>Pending order</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/daily-process-product-order">
+                  <Link href="/ecommerce/daily-process-product-order">
                     <a>Process order</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/daily-success-product-order">
+                  <Link href="/ecommerce/daily-success-product-order">
                     <a>Success order </a>
                   </Link>
                 </li>
 
                 <li>
-                  <Link href="/daily-cancel-product-order">
+                  <Link href="/ecommerce/daily-cancel-product-order">
                     <a>Cancel order </a>
                   </Link>
                 </li>
@@ -237,23 +231,23 @@ const NavBar = () => {
               </a>
               <ul aria-expanded="false">
                 <li>
-                  <Link href="/daily-pending-product-order-return">
+                  <Link href="/ecommerce/daily-pending-product-order-return">
                     <a>Pending return order</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/daily-process-product-order-return">
+                  <Link href="/ecommerce/daily-process-product-order-return">
                     <a>Return process order</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/daily-success-product-order-return">
+                  <Link href="/ecommerce/daily-success-product-order-return">
                     <a>Success return order</a>
                   </Link>
                 </li>
 
                 <li>
-                  <Link href="/daily-cancel-product-order-return">
+                  <Link href="/ecommerce/daily-cancel-product-order-return">
                     <a>Return cancel order </a>
                   </Link>
                 </li>
@@ -268,22 +262,22 @@ const NavBar = () => {
               </a>
               <ul aria-expanded="false">
                 <li>
-                  <Link href="/all-product-pending-order-return">
+                  <Link href="/ecommerce/all-product-pending-order-return">
                     <a>Pending return order</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/all-product-process-order-return">
+                  <Link href="/ecommerce/all-product-process-order-return">
                     <a>Return process order</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/all-product-success-order-return">
+                  <Link href="/ecommerce/all-product-success-order-return">
                     <a>Success return order</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/all-product-cancel-order-return">
+                  <Link href="/ecommerce/all-product-cancel-order-return">
                     <a>Return cancel order </a>
                   </Link>
                 </li>
@@ -298,22 +292,22 @@ const NavBar = () => {
               </a>
               <ul aria-expanded="false">
                 <li>
-                  <Link href="/all-product-pending-order">
+                  <Link href="/ecommerce/all-product-pending-order">
                     <a>Pending order</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/all-product-process-order">
+                  <Link href="/ecommerce/all-product-process-order">
                     <a>Process order</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/all-product-success-order">
+                  <Link href="/ecommerce/all-product-success-order">
                     <a>Success order</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/all-product-cancel-order">
+                  <Link href="/ecommerce/all-product-cancel-order">
                     <a>Cancel order </a>
                   </Link>
                 </li>
@@ -768,4 +762,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-

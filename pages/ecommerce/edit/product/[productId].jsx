@@ -1,6 +1,6 @@
 import axios from "axios";
-import fromValueUpdate from "../../../commonFunction/onChangeHandle";
-import useScript from "../../../commonFunction/ReloadJs";
+import fromValueUpdate from "../../../../commonFunction/onChangeHandle";
+import useScript from "../../../../commonFunction/ReloadJs";
 const ListOfProductEdit = (props) => {
   useScript("/assets/js/app.js");
 
