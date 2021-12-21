@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import useScript from "../commonFunction/ReloadJs";
+import useScript from "../../commonFunction/ReloadJs";
 const ListOfProductPackage = (props) => {
   useScript("/assets/js/app.js");
   return (

@@ -112,13 +112,6 @@ const AddCategory = (props) => {
   const showSubCategoryData = useRecoilValue(storeListOfSubCategory);
   return (
     <div>
-      <div class="loader">
-        <div class="h-100 d-flex justify-content-center">
-          <div class="align-self-center">
-            <img src="assets/img/loader/loader.svg" alt="loader" />
-          </div>
-        </div>
-      </div>
       <div className="row">
         <div className="col-md-6 m-b-30">
           <div className="card card-statistics">

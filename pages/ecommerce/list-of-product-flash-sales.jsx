@@ -31,13 +31,6 @@ const ListOfProductFlashSales = (props) => {
   };
   return (
     <div>
-      <div class="loader">
-        <div class="h-100 d-flex justify-content-center">
-          <div class="align-self-center">
-            <img src="assets/img/loader/loader.svg" alt="loader" />
-          </div>
-        </div>
-      </div>
       <div className="row">
         <div className="col-md-12 m-b-30">
           <div className="d-block d-sm-flex flex-nowrap align-items-center">
