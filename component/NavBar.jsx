@@ -56,7 +56,7 @@ const NavBar = () => {
               <a className="has-arrow" href="javascript:void(0)" aria-expanded="false">
                 <i className="nav-icon ti ti-rocket" />
                 <span className="nav-title">Category</span>
-                <span className="nav-label label label-danger">2</span>
+                <span className="nav-label label label-danger">4</span>
               </a>
               <ul aria-expanded="false">
                 <li>
@@ -86,7 +86,7 @@ const NavBar = () => {
               <a className="has-arrow" href="javascript:void(0)" aria-expanded="false">
                 <i className="nav-icon ti ti-rocket" />
                 <span className="nav-title">Add Product</span>
-                <span className="nav-label label label-danger">2</span>
+                <span className="nav-label label label-danger">1</span>
               </a>
               <ul aria-expanded="false">
                 <li>

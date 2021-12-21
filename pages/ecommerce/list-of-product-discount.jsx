@@ -1,36 +1,43 @@
 import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
 import deleteInformation from "../../commonFunction/deleteInformation";
 import useScript from "../../commonFunction/ReloadJs";
 
-const ListOfProduct = (props) => {
+const ListOfProductDiscount = (props) => {
   useScript("/assets/js/app.js");
 
-  const MySwal = withReactContent(Swal);
-  const getProductList = props.data;
-  const [product, updateProductInfo] = useState(getProductList);
+  const getProductDiscount = props.data;
+  const [product, updateProductInfo] = useState(getProductDiscount);
 
   useEffect(() => {
-    updateProductInfo(getProductList);
-  }, [getProductList]);
+    updateProductInfo(getProductDiscount);
+  }, [getProductDiscount]);
   const deleteItem = async (id) => {
     const formData = { tableName: "product", idColumnName: "id", idValue: id };
     const response = await axios
       .post(process.env.API_URL + "/Delete", formData)
       .then((item) => {
         MySwal.fire("Good job!", "Delete information successfully", "success");
-        deleteInformation(id, product, getProductList, updateProductInfo);
+        deleteInformation(id, product, getProductDiscount, updateProductInfo);
       })
       .catch((error) => {
         MySwal.fire("Brand not saved!", "Something Error Found.", "warning");
       });
   };
 
+  const editProduct = (id) => {
+    alert(id);
+  };
   return (
     <div>
+      <div class="loader">
+        <div class="h-100 d-flex justify-content-center">
+          <div class="align-self-center">
+            <img src="assets/img/loader/loader.svg" alt="loader" />
+          </div>
+        </div>
+      </div>
       <div className="row">
         <div className="col-md-12 m-b-30">
           <div className="d-block d-sm-flex flex-nowrap align-items-center">
@@ -168,18 +175,11 @@ const ListOfProduct = (props) => {
   );
 };
 
-export async function getServerSideProps(context) {
-  const { data } = await axios.get(process.env.API_URL + "/GetAllProduct");
-
-  if (!data) {
-    return {
-      notFound: true,
-    };
-  }
-
+export async function getStaticProps(context) {
+  const { data } = await axios.get(process.env.API_URL + "/GetAllDiscountProduct");
   return {
     props: { data },
   };
 }
 
-export default ListOfProduct;
+export default ListOfProductDiscount;
