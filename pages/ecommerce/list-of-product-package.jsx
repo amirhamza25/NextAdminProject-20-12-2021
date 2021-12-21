@@ -1,41 +1,15 @@
 import axios from "axios";
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
-import deleteInformation from "../../commonFunction/deleteInformation";
+import React from "react";
 import useScript from "../../commonFunction/ReloadJs";
-
-const ListOfProduct = (props) => {
+const ListOfProductPackage = (props) => {
   useScript("/assets/js/app.js");
-
-  const MySwal = withReactContent(Swal);
-  const getProductList = props.data;
-  const [product, updateProductInfo] = useState(getProductList);
-
-  useEffect(() => {
-    updateProductInfo(getProductList);
-  }, [getProductList]);
-  const deleteItem = async (id) => {
-    const formData = { tableName: "product", idColumnName: "id", idValue: id };
-    const response = await axios
-      .post(process.env.API_URL + "/Delete", formData)
-      .then((item) => {
-        MySwal.fire("Good job!", "Delete information successfully", "success");
-        deleteInformation(id, product, getProductList, updateProductInfo);
-      })
-      .catch((error) => {
-        MySwal.fire("Brand not saved!", "Something Error Found.", "warning");
-      });
-  };
-
   return (
     <div>
       <div className="row">
         <div className="col-md-12 m-b-30">
           <div className="d-block d-sm-flex flex-nowrap align-items-center">
             <div className="page-title mb-2 mb-sm-0">
-              <h1>List of product</h1>
+              <h1>List of product package</h1>
             </div>
             <div className="ml-auto d-flex align-items-center">
               <nav>
@@ -47,7 +21,7 @@ const ListOfProduct = (props) => {
                   </li>
                   <li className="breadcrumb-item">Tables</li>
                   <li className="breadcrumb-item active text-primary" aria-current="page">
-                    List of product
+                    List of product package
                   </li>
                 </ol>
               </nav>
@@ -71,6 +45,7 @@ const ListOfProduct = (props) => {
                       <th>Brand name</th>
                       <th>Product name</th>
                       <th>Product code</th>
+                      <th>Qty</th>
                       <th>Tp price</th>
                       <th>Buy price</th>
                       <th>Cash back amount</th>
@@ -80,30 +55,28 @@ const ListOfProduct = (props) => {
                       <th>Full discription</th>
                       <th>Product type</th>
                       <th>Status</th>
-                      <th>Action</th>
+                      <th>Edit</th>
                       <th>Delete</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {product.map((item, index) => (
+                    {props.data.map((item, index) => (
                       <tr key={index}>
                         <td>{index + 1}</td>
-                        <td>
-                          <img src={process.env.API_URL + "/upload/" + JSON.parse(item.img)} width={150} height={150} />
-                        </td>
-                        <td>{item.categories[0]["title"]}</td>
-                        <td>{item.categorySubs[0]["title"]}</td>
-                        <td>{item.categoryBrands[0]["title"]}</td>
-                        <td>{item.name}</td>
-                        <td>{item.name}</td>
-                        <td>{item.brandCode}</td>
-                        <td>{item.realPrice}</td>
-                        <td>{item.buyPrice}</td>
-                        <td>{item.cashBackAmount}</td>
-                        <td>{item.discountAmount}</td>
-                        <td>{item.productDeliveryCharge}</td>
-                        <td>{item.shortDescription}</td>
-                        <td>{item.fullDescription}</td>
+                        <td>picture</td>
+                        <td>Category name</td>
+                        <td>Sub category name</td>
+                        <td>Brand name</td>
+                        <td>Product Name</td>
+                        <td>Product code</td>
+                        <td>Qty</td>
+                        <td>Tp price</td>
+                        <td>Buy price</td>
+                        <td>Cash back amount</td>
+                        <td>Discount amount</td>
+                        <td>Delivery amount</td>
+                        <td>Short discription</td>
+                        <td>Full discription</td>
                         <td>
                           <div className="form-check mb-0 py-2">
                             <input className="form-check-input" type="radio" name="toasts2" id="toast-bottom-right" defaultValue="toast-bottom-right" />
@@ -146,13 +119,13 @@ const ListOfProduct = (props) => {
                           </div>
                         </td>
                         <td>
-                          <Link href="/ecommerce/edit/product/[productId]" as={`/ecommerce/edit/product/${item.id}`}>
-                            <a className="btn btn-sm btn-outline-info">
-                              <i className="fa fa-edit"></i>
-                            </a>
-                          </Link>
-                          <a href="javascript:void(0)" onClick={() => deleteItem(item.id)} className="btn btn-sm btn-outline-danger ml-2">
-                            <i className="fa fa-trash"></i>
+                          <a href="javascript:void(0);" className="btn btn-block btn-outline-info">
+                            Edit
+                          </a>
+                        </td>
+                        <td>
+                          <a href="javascript:void(0);" className="btn btn-block btn-square btn-outline-danger">
+                            Delete
                           </a>
                         </td>
                       </tr>
@@ -168,18 +141,11 @@ const ListOfProduct = (props) => {
   );
 };
 
-export async function getServerSideProps(context) {
-  const { data } = await axios.get(process.env.API_URL + "/GetAllProduct");
-
-  if (!data) {
-    return {
-      notFound: true,
-    };
-  }
-
+export async function getStaticProps(context) {
+  const { data } = await axios.get("https://jsonplaceholder.typicode.com/posts");
   return {
     props: { data },
   };
 }
 
-export default ListOfProduct;
+export default ListOfProductPackage;

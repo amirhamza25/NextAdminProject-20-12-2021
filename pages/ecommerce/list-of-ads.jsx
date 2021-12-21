@@ -6,26 +6,27 @@ import withReactContent from "sweetalert2-react-content";
 import deleteInformation from "../../commonFunction/deleteInformation";
 import useScript from "../../commonFunction/ReloadJs";
 
-const ListOfProduct = (props) => {
+const ListOfAds = (props) => {
   useScript("/assets/js/app.js");
 
   const MySwal = withReactContent(Swal);
-  const getProductList = props.data;
-  const [product, updateProductInfo] = useState(getProductList);
+  const getSliderList = props.data.data;
+  const [slider, updateSliderInfo] = useState(getSliderList);
 
   useEffect(() => {
-    updateProductInfo(getProductList);
-  }, [getProductList]);
+    updateSliderInfo(getSliderList);
+  }, [getSliderList]);
+
   const deleteItem = async (id) => {
-    const formData = { tableName: "product", idColumnName: "id", idValue: id };
+    const formData = { tableName: "addSliderAndAds", idColumnName: "id", idValue: id };
     const response = await axios
       .post(process.env.API_URL + "/Delete", formData)
       .then((item) => {
         MySwal.fire("Good job!", "Delete information successfully", "success");
-        deleteInformation(id, product, getProductList, updateProductInfo);
+        deleteInformation(id, slider, getSliderList, updateSliderInfo);
       })
       .catch((error) => {
-        MySwal.fire("Brand not saved!", "Something Error Found.", "warning");
+        MySwal.fire("information not delete !", "Something Error Found.", "warning");
       });
   };
 
@@ -35,7 +36,7 @@ const ListOfProduct = (props) => {
         <div className="col-md-12 m-b-30">
           <div className="d-block d-sm-flex flex-nowrap align-items-center">
             <div className="page-title mb-2 mb-sm-0">
-              <h1>List of product</h1>
+              <h1>List of Ads</h1>
             </div>
             <div className="ml-auto d-flex align-items-center">
               <nav>
@@ -47,7 +48,7 @@ const ListOfProduct = (props) => {
                   </li>
                   <li className="breadcrumb-item">Tables</li>
                   <li className="breadcrumb-item active text-primary" aria-current="page">
-                    List of product
+                    List of Ads
                   </li>
                 </ol>
               </nav>
@@ -66,70 +67,24 @@ const ListOfProduct = (props) => {
                     <tr>
                       <th>Serial</th>
                       <th>Picture</th>
-                      <th>Category name</th>
-                      <th>Sub category name</th>
-                      <th>Brand name</th>
-                      <th>Product name</th>
-                      <th>Product code</th>
-                      <th>Tp price</th>
-                      <th>Buy price</th>
-                      <th>Cash back amount</th>
-                      <th>Discount amount</th>
-                      <th>Delivery amount</th>
                       <th>Short discription</th>
-                      <th>Full discription</th>
-                      <th>Product type</th>
+                      <th>Type</th>
                       <th>Status</th>
-                      <th>Action</th>
+                      <th>Edit</th>
                       <th>Delete</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {product.map((item, index) => (
+                    {slider.map((item, index) => (
                       <tr key={index}>
                         <td>{index + 1}</td>
                         <td>
-                          <img src={process.env.API_URL + "/upload/" + JSON.parse(item.img)} width={150} height={150} />
+                          <img src={process.env.API_URL + "/upload/" + item.img} width={150} height={150} />
                         </td>
-                        <td>{item.categories[0]["title"]}</td>
-                        <td>{item.categorySubs[0]["title"]}</td>
-                        <td>{item.categoryBrands[0]["title"]}</td>
-                        <td>{item.name}</td>
-                        <td>{item.name}</td>
-                        <td>{item.brandCode}</td>
-                        <td>{item.realPrice}</td>
-                        <td>{item.buyPrice}</td>
-                        <td>{item.cashBackAmount}</td>
-                        <td>{item.discountAmount}</td>
-                        <td>{item.productDeliveryCharge}</td>
-                        <td>{item.shortDescription}</td>
-                        <td>{item.fullDescription}</td>
                         <td>
-                          <div className="form-check mb-0 py-2">
-                            <input className="form-check-input" type="radio" name="toasts2" id="toast-bottom-right" defaultValue="toast-bottom-right" />
-                            <label className="form-check-label" htmlFor="toast-bottom-right">
-                              Offer
-                            </label>
-                          </div>
-                          <div className="form-check mb-0 py-2">
-                            <input className="form-check-input" type="radio" name="toasts2" id="toast-bottom-right" defaultValue="toast-bottom-right" />
-                            <label className="form-check-label" htmlFor="toast-bottom-right">
-                              Flash sale
-                            </label>
-                          </div>
-                          <div className="form-check mb-0 py-2">
-                            <input className="form-check-input" type="radio" name="toasts2" id="toast-bottom-right" defaultValue="toast-bottom-right" />
-                            <label className="form-check-label" htmlFor="toast-bottom-right">
-                              Discount
-                            </label>
-                          </div>
-                          <div className="form-check mb-0 py-2">
-                            <input className="form-check-input" type="radio" name="toasts2" id="toast-bottom-right" defaultValue="toast-bottom-right" />
-                            <label className="form-check-label" htmlFor="toast-bottom-right">
-                              Cash back
-                            </label>
-                          </div>
+                          <input type="text" className="form-control" id="fname" name="shortDiscription" value="Short discription" />
                         </td>
+                        <td>{item.title}</td>
                         <td>
                           <div className="form-check mb-0 py-2">
                             <input className="form-check-input" type="radio" name="toasts" id="success" defaultValue="success" defaultChecked />
@@ -146,7 +101,12 @@ const ListOfProduct = (props) => {
                           </div>
                         </td>
                         <td>
-                          <Link href="/ecommerce/edit/product/[productId]" as={`/ecommerce/edit/product/${item.id}`}>
+                          <a href="javascript:void(0);" className="btn btn-block btn-outline-info">
+                            Edit
+                          </a>
+                        </td>
+                        <td>
+                          <Link href="/ecommerce/edit/slider/[sliderId]" as={`/ecommerce/edit/slider/${item.id}`}>
                             <a className="btn btn-sm btn-outline-info">
                               <i className="fa fa-edit"></i>
                             </a>
@@ -169,7 +129,7 @@ const ListOfProduct = (props) => {
 };
 
 export async function getServerSideProps(context) {
-  const { data } = await axios.get(process.env.API_URL + "/GetAllProduct");
+  const { data } = await axios.get(process.env.API_URL + "/GetInformationSingle/addSliderAndAds&status='Ads'");
 
   if (!data) {
     return {
@@ -182,4 +142,4 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default ListOfProduct;
+export default ListOfAds;
